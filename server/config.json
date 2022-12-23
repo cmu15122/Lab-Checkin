@@ -1,7 +1,7 @@
 {
-  "course": "",
-  "emailDomain": "",
-  "offsetHours": 0,
+  "course": "15122 beta",
+  "emailDomain": "andrew.cmu.edu",
+  "offsetHours": 5,
   "offsetMinutes": 0,
   "minScore": 0,
   "maxScore": 3,
@@ -9,11 +9,125 @@
   "lowercaseStudents": false,
   "radioInput": true,
   "manualLab": false,
-  "flagSection": false,
+  "flagSection": true,
   "flagAttempts": "",
-  "flagAttemptsThreshold": 3600000,
+  "flagAttemptsThreshold": 0,
   "flagInvalid": true,
   "flagGhosts": true,
   "allowOverride": true,
-  "sections": {}
+  "sections": {
+    "A": {
+      "start_hour": "9",
+      "start_minute": "5",
+      "end_hour": "10",
+      "end_minute": "10"
+    },
+    "B": {
+      "start_hour": "10",
+      "start_minute": "10",
+      "end_hour": "11",
+      "end_minute": "15"
+    },
+    "C": {
+      "start_hour": "11",
+      "start_minute": "15",
+      "end_hour": "12",
+      "end_minute": "20"
+    },
+    "D": {
+      "start_hour": "12",
+      "start_minute": "20",
+      "end_hour": "13",
+      "end_minute": "25"
+    },
+    "E": {
+      "start_hour": "13",
+      "start_minute": "25",
+      "end_hour": "14",
+      "end_minute": "30"
+    },
+    "F": {
+      "start_hour": "14",
+      "start_minute": "30",
+      "end_hour": "15",
+      "end_minute": "35"
+    },
+    "G": {
+      "start_hour": "15",
+      "start_minute": "35",
+      "end_hour": "16",
+      "end_minute": "40"
+    },
+    "H": {
+      "start_hour": "16",
+      "start_minute": "40",
+      "end_hour": "17",
+      "end_minute": "45"
+    },
+    "Q": {
+      "start_hour": "18",
+      "start_minute": "5",
+      "end_hour": "19",
+      "end_minute": "10"
+    },
+    "I": {
+      "start_hour": "9",
+      "start_minute": "5",
+      "end_hour": "10",
+      "end_minute": "10"
+    },
+    "J": {
+      "start_hour": "10",
+      "start_minute": "10",
+      "end_hour": "11",
+      "end_minute": "15"
+    },
+    "K": {
+      "start_hour": "11",
+      "start_minute": "15",
+      "end_hour": "12",
+      "end_minute": "20"
+    },
+    "L": {
+      "start_hour": "12",
+      "start_minute": "20",
+      "end_hour": "13",
+      "end_minute": "25"
+    },
+    "M": {
+      "start_hour": "13",
+      "start_minute": "25",
+      "end_hour": "14",
+      "end_minute": "30"
+    },
+    "N": {
+      "start_hour": "14",
+      "start_minute": "30",
+      "end_hour": "15",
+      "end_minute": "35"
+    },
+    "O": {
+      "start_hour": "15",
+      "start_minute": "35",
+      "end_hour": "16",
+      "end_minute": "40"
+    },
+    "P": {
+      "start_hour": "16",
+      "start_minute": "40",
+      "end_hour": "17",
+      "end_minute": "45"
+    },
+    "R": {
+      "start_hour": "18",
+      "start_minute": "5",
+      "end_hour": "19",
+      "end_minute": "10"
+    }
+  },
+  "possibleScores": [
+    1.5,
+    3,
+    4
+  ]
 }

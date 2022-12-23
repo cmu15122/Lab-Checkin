@@ -27,7 +27,7 @@ function appData() {
 
 /* GET admin console -> data */
 router.get('/', (req, res) => {
-  res.redirect('/admin/data');
+  res.redirect('/lab/admin/data');
 });
 
 // parse a query from the data page
@@ -236,7 +236,7 @@ router.post('/adduser', (req, res, next) => {
       admin: admin === 'on',
     }, (saveErr) => {
       if (saveErr) return next(createError(500, saveErr));
-      return res.redirect('/admin/users?success=user+add');
+      return res.redirect('/lab/admin/users?success=user+add');
     });
   });
 });
@@ -252,7 +252,7 @@ router.post('/removeuser', (req, res, next) => {
   // query user with given _id and delete it
   User.remove({ _id: student_id }, (err) => {
     if (err) return next(createError(500, err));
-    return res.redirect('/admin/users?success=user+delete');
+    return res.redirect('/lab/admin/users?success=user+delete');
   });
 });
 
@@ -272,7 +272,7 @@ router.post('/enrollstudents', (req, res, next) => {
     function iterItems(i, err) {
       if (err) return next(createError(500, err));
       if (i === json.length) {
-        return res.redirect('/admin/students?success=student+registration');
+        return res.redirect('/lab/admin/students?success=student+registration');
       }
 
       const item = json[i];
@@ -293,7 +293,7 @@ router.post('/removestudents', (req, res, next) => {
   // query all students and delete them
   Student.deleteMany({}).exec((err) => {
     if (err) return next(createError(500, err));
-    return res.redirect('/admin/students?success=student+registration+delete');
+    return res.redirect('/lab/admin/students?success=student+registration+delete');
   });
 });
 
@@ -307,7 +307,7 @@ router.post('/writeconfig', (req, res, next) => {
       // save final config to disk
       config.save((saveErr) => {
         if (saveErr) iterItems(null, saveErr);
-        return res.redirect('/admin/config?success=settings+change');
+        return res.redirect('/lab/admin/config?success=settings+change');
       });
       return;
     }

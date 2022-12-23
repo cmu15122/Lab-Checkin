@@ -1,4 +1,4 @@
-<form method="POST" action="/admin/writeconfig" target="_self">
+<form method="POST" action="/lab/admin/writeconfig" target="_self">
 	<div class="field is-horizontal">
 		<div class="field-body">
 			<div class="field">
@@ -80,7 +80,7 @@
 				{{else}}
 					You have enabled a feature that requires data about students and section registration for {{course}}. Please upload this information
 				{{/if}}
-				on the <a href="/admin/students">students page</a>.
+				on the <a href="/lab/admin/students">students page</a>.
 			</p>
 		</div>
 		<div id="section-data">
@@ -153,8 +153,8 @@
 			<input type="checkbox" name="allowOverride" {{checked config.allowOverride}} />
 			Allow flag override at check-in
 		</label>
-		<script src="/javascripts/config-display.js"></script>
-		<script src="/javascripts/file-reader.js"></script>
+		<script src="/lab/javascripts/config-display.js"></script>
+		<script src="/lab/javascripts/file-reader.js"></script>
 	</div>
 	<div class="field">
 		<div class="control">

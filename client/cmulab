@@ -5,8 +5,8 @@ cd "$(dirname "$0")"
 
 
 # TODO: Change these variables for your course
-CMULAB_COURSE="" # insert course number here
-CMULAB_LOC="" # insert hosting URL here (without trailing /)
+CMULAB_COURSE="15122" # insert course number here
+CMULAB_LOC="15122.ga/lab" # insert hosting URL here (without trailing /)
 
 
 # Generate location for QR Code

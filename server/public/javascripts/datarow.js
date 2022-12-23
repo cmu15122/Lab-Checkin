@@ -35,7 +35,7 @@ var DataRow = function (_React$Component) {
     value: function toggleGood() {
       var _this2 = this;
 
-      axios.post('/admin/togglegood', {
+      axios.post('/lab/admin/togglegood', {
         _id: this.props._id,
         good: !this.state.good
       }).then(function (res) {

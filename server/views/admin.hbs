@@ -14,11 +14,11 @@
 			</div>
 		</div>
 	</nav>
-	<script src="/javascripts/success.js"></script>
+	<script src="/lab/javascripts/success.js"></script>
 {{/if}}
 
 <br />
-<center><a href="/" class="tag is-primary is-large is-rounded cmulab">CMULab</a> &nbsp;<span class="title is-5"> {{course}}</span></center>
+<center><a href="/lab/" class="tag is-primary is-large is-rounded cmulab">CMULab</a> &nbsp;<span class="title is-5"> {{course}}</span></center>
 
 {{#if version.update }}
 	<section class="section">
@@ -43,7 +43,7 @@
 <div class="tabs is-centered is-boxed is-small">
 	<ul>
 		<li class="{{#if isData}}is-active{{/if}}">
-			<a href="/admin/data">
+			<a href="/lab/admin/data">
 				<span class="icon is-small">
 					<i class="fa fa-database"></i>
 		    	</span>
@@ -51,7 +51,7 @@
 			</a>
 		</li>
 		<li class="{{#if isPeople}}is-active{{/if}}">
-			<a href="/admin/users">
+			<a href="/lab/admin/users">
 				<span class="icon is-small">
 					<i class="fa fa-users"></i>
 		    	</span>
@@ -59,7 +59,7 @@
 			</a>
 		</li>
 		<li class="{{#if isConfig}}is-active{{/if}}">
-			<a href="/admin/config">
+			<a href="/lab/admin/config">
 				<span class="icon is-small">
 					<i class="fa fa-cog"></i>
 		    	</span>
@@ -76,7 +76,7 @@
 				<div class="tabs is-small is-toggle is-toggle-rounded is-fullwidth">
 					<ul>
 						<li class="{{#unless isPeopleStudents}}is-active{{/unless}}">
-							<a href="/admin/users">
+							<a href="/lab/admin/users">
 								<span class="icon is-small">
 									<i class="fa fa-shield-alt"></i>
 						    	</span>
@@ -84,7 +84,7 @@
 							</a>
 						</li>
 						<li class="{{#if isPeopleStudents}}is-active{{/if}}">
-							<a href="/admin/students">
+							<a href="/lab/admin/students">
 								<span class="icon is-small">
 									<i class="fa fa-graduation-cap"></i>
 						    	</span>

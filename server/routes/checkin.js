@@ -141,7 +141,7 @@ router.post('/:student_id', authRequired, (req, res, next) => {
     return next(createError(400, 'Provide section and score'));
   }
   // make sure score is within configured range
-  if (score < config.get('minScore') || score > config.get('maxScore')) {
+  if (score < config.get('minScore')){  // || score > config.get('maxScore')) {
     return next(createError(400, 'Invalid score'));
   }
 
@@ -208,10 +208,10 @@ router.post('/:student_id', authRequired, (req, res, next) => {
 
         // send the message
         email.sendMail(message)
-          .then(() => res.redirect('/?success=check-in'))
+          .then(() => res.redirect('/lab/?success=check-in'))
           .catch(emailErr => next(createError(500, emailErr)));
       } else {
-        return res.redirect('/?success=check-in');
+        return res.redirect('/lab/?success=check-in');
       }
     });
   });

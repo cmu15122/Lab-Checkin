@@ -89,9 +89,9 @@ app.use('/login', loginRouter);
 app.post('/go', (req, res) => {
   const { student_id } = req.body;
   // if student_id is not provided, go to home page
-  if (!student_id) return res.redirect('/');
+  if (!student_id) return res.redirect('/lab');
   // go to checkin page for student
-  res.redirect(`/checkin/${student_id}`);
+  res.redirect(`/lab/checkin/${student_id}`);
 });
 
 // catch 404 and forward to error handler

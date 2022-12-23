@@ -21,7 +21,7 @@ router.get('/callback',
   passport.authenticate('google'),
   (req, res) => {
     // redirect to original page or home if there was none
-    const redirect = req.session.oauth2return || '/';
+    const redirect = '/lab/' + req.session.oauth2return || '/lab/';
     delete req.session.oauth2return;
     res.redirect(redirect);
   });

@@ -46,7 +46,7 @@ var DataView = function (_React$Component) {
     value: function getData() {
       var _this2 = this;
 
-      axios.post('/admin/rawdata', {
+      axios.post('/lab/admin/rawdata', {
         filters: this.state.filters,
         sort: this.state.sort
       }).then(function (res) {
@@ -66,7 +66,7 @@ var DataView = function (_React$Component) {
       var _this3 = this;
 
       if (type === 'csv') {
-        axios.post('/admin/getcsv', {
+        axios.post('/lab/admin/getcsv', {
           filters: this.state.filters,
           sort: this.state.sort
         }).then(function (res) {
@@ -103,7 +103,7 @@ var DataView = function (_React$Component) {
     value: function deleteData() {
       var _this4 = this;
 
-      axios.post('/admin/delete', {
+      axios.post('/lab/admin/delete', {
         filters: this.state.filters
       }).then(function () {
         return _this4.setState({
@@ -175,7 +175,7 @@ var DataView = function (_React$Component) {
     value: function assignLab(lab, preserve) {
       var _this5 = this;
 
-      axios.post('/admin/assignlab', {
+      axios.post('/lab/admin/assignlab', {
         filters: this.state.filters,
         lab: lab,
         preserve: preserve
