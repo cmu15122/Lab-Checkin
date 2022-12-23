@@ -79,7 +79,7 @@ router.get('/data', (req, res) => {
 /* GET manage users */
 router.get('/users', (req, res, next) => {
   // query all users and sort by _id
-  User.find().sort('_id').exec((err, users) => {
+  User.find().lean().sort('_id').exec((err, users) => {
     if (err) return next(createError(500, err));
     // render page with queried data
     res.render('admin', {
@@ -88,6 +88,7 @@ router.get('/users', (req, res, next) => {
       success: req.query.success,
       ...appData(),
     });
+    console.log(users);
   });
 });
 
