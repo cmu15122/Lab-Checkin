@@ -1,0 +1,31 @@
+<section class="hero is-light is-bold is-fullheight">
+	<div class="hero-body">
+		<div class="container">
+			<div class="columns">
+				<div class="column is-4 is-offset-4">
+					<p>
+						<center><span class="title is-4">Precept QR Code for {{user}}</span></center>
+		  			</p>
+		  			<br />
+		  			<p class="subtitle is-5 has-text-centered">
+						<img src={{qrcode_url}}>
+		  			</p>
+					<br />
+					<p class="has-text-centered has-text-grey">
+						<a href="/lab/admin">
+							<small>Admin Console</small>
+							<span class="icon">
+								<i class="fa fa-lock"></i>
+					    	</span>
+						</a>
+					</p>
+	  			</div>
+  			</div>
+		</div>
+	</div>
+	<div class="hero-foot">
+		<p>
+			<small class="has-text-grey-light">{{> footer}}</small>
+		</p>
+	</div>
+</section>
