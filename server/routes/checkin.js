@@ -6,7 +6,7 @@ const config = require('./../util/config');
 const convertDate = require('./../util/convertDate');
 const Entry = require('./../models/Entry');
 const Student = require('./../models/Student');
-const authRequired = require('./../util/authRequired');
+const TARequired = require('./../util/TARequired');
 
 const router = express.Router();
 
@@ -24,7 +24,7 @@ function parseSectionTime(data) {
 }
 
 /* GET checkin form */
-router.get('/:student_id', authRequired, (req, res) => {
+router.get('/:student_id', TARequired, (req, res) => {
   let { student_id } = req.params;
   // convert student_id to lowercase if necessary
   if (config.get('lowercaseStudents')) student_id = student_id.toLowerCase();
@@ -133,7 +133,7 @@ router.get('/:student_id', authRequired, (req, res) => {
 });
 
 /* POST checkin data */
-router.post('/:student_id', authRequired, (req, res, next) => {
+router.post('/:student_id', TARequired, (req, res, next) => {
   const {
     section, score, flags, override,
   } = req.body;
@@ -168,7 +168,7 @@ router.post('/:student_id', authRequired, (req, res, next) => {
       section: section.toUpperCase(),
       lab: config.get('manualLab') ? req.body.lab : null,
       score,
-      ta: req.user._id,
+      ta: req.user._user._id,
     };
     // set flags that were computed on checkin load if necessary
     if (flags) {
@@ -197,7 +197,7 @@ router.post('/:student_id', authRequired, (req, res, next) => {
             <br /><span style="font-weight: bold">Section:</span> ${section.toUpperCase()}
             <br /><span style="font-weight: bold">Score:</span> ${score}
             <br /><span style="font-weight: bold">Time:</span> ${convertDate(moment(date), -1, false).format('MMMM Do YYYY, h:mm:ss a')}
-            <br /><span style="font-weight: bold">TA:</span> ${req.user._id}</p>
+            <br /><span style="font-weight: bold">TA:</span> ${req.user._user._id}</p>
 
             <p>Best,<br />${config.get('course')} Staff</p>
 

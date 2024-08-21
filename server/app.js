@@ -63,8 +63,13 @@ passport.use(new GoogleStrategy({
   // check if user is authorized in db
   const student_id = email.slice(0, email.lastIndexOf('@'));
   User.findOne({ _id: student_id }, (err, user) => {
-    if (!user) return done('Not permitted');
-    return done(err, user);
+    if (!user) {
+      Student.findOne({ _id: student_id }, (err, user) => {
+        if (!user) return done('Not permitted');
+	return done(err, {student: true, _user: user});
+      });
+    }
+    return done(err, {student: false, _user: user});
   });
 }));
 passport.serializeUser((user, cb) => {

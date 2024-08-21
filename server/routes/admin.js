@@ -247,7 +247,7 @@ router.post('/removeuser', (req, res, next) => {
   const { student_id } = req.body;
   if (!student_id) return next(createError(400, 'Provide student_id'));
   // make sure admin is not deleting themselves
-  if (student_id === req.user._id) {
+  if (student_id === req.user._user._id) {
     return next(createError(400, 'Delete yourself?'));
   }
   // query user with given _id and delete it
