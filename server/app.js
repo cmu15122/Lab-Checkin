@@ -20,6 +20,7 @@ const indexRouter = require('./routes/index');
 const checkinRouter = require('./routes/checkin');
 const adminRouter = require('./routes/admin');
 const loginRouter = require('./routes/login');
+const qrcodeRouter = require('./routes/qrcode');
 
 const app = express();
 
@@ -89,6 +90,7 @@ app.use('/', indexRouter);
 app.use('/checkin', checkinRouter);
 app.use('/admin', adminRouter);
 app.use('/login', loginRouter);
+app.use('/qrcode', qrcodeRouter);
 
 /* POST go to checkin */
 app.post('/go', (req, res) => {
