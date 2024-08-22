@@ -55,18 +55,16 @@ passport.use(new GoogleStrategy({
   clientSecret: process.env.CMULAB_GOOGLE_SECRET,
   callbackURL: `${process.env.CMULAB_LOC}/login/callback`,
   userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo',
+  authorizationURL: `https://accounts.google.com/o/oauth2/auth?hd=${config.get('emailDomain')}`
 }, (token, tokenSecret, profile, done) => {
-  // check if email ends with approved email domain
+  // due to the `hd` (hosted domain) at the end of the authorization URL, we know only CMU accounts can be authenticated
   const email = profile.emails[0].value;
-  if (!email.endsWith(`@${config.get('emailDomain')}`)) {
-    return done('Not a university user');
-  }
   // check if user is authorized in db
   const student_id = email.slice(0, email.lastIndexOf('@'));
   User.findOne({ _id: student_id }, (err, user) => {
     if (!user) {
       Student.findOne({ _id: student_id }, (err, user) => {
-        if (!user) return done('Not permitted');
+        if (!user) return done(`User ${student_id} is not enrolled in ${config.get('course')}`);
 	return done(err, {student: true, _user: user});
       });
     }
