@@ -20,9 +20,21 @@ router.get('/callback',
   // authenticate using passport
   passport.authenticate('google'),
   (req, res) => {
-    // redirect to original page or home if there was none
-    const redirect = '/lab' + req.session.oauth2return || '/lab/';
-    delete req.session.oauth2return;
+    // redirect to original page if that exists
+    // otherwise, redirect to home for TAs or the qrcode for students
+    var default_path = '/lab';
+    if (req.user) {
+      default_path += req.user.student ? '/qrcode' : '';
+    }
+
+    var redirect = '/lab';
+    if (req.session.oauth2return) {
+      redirect += req.session.oauth2return;
+      delete req.session.oauth2return;
+    } else {
+      console.log(`- No specified oauth2return for user ${req.user._user._id}'s login request, rerouting to ${default_path}`);
+      redirect = default_path;
+    }
     res.redirect(redirect);
   });
 
