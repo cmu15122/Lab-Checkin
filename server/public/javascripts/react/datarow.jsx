@@ -28,7 +28,7 @@ class DataRow extends React.Component {
   }
 
   render() {
-    const { showStudent, _id, section, student_id, score, lab, date, ta, flags } = this.props;
+    const { showStudent, _id, section, student_id, score, precept, date, ta, flags } = this.props;
     const { good, isActive } = this.state;
     return <tr>
       <td>
@@ -41,7 +41,7 @@ class DataRow extends React.Component {
         {score}
       </td>
       <td>
-        {lab}
+        {precept}
       </td>
       <td>
         {date}

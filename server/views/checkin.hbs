@@ -26,7 +26,7 @@
 						<a class="button is-small is-white is-outlined is-rounded" onclick="flagDismiss();">
 							<span>Dismiss</span>
 						</a>
-						<script src="/lab/javascripts/flag-manipulation.js"></script>
+						<script src="/precept/javascripts/flag-manipulation.js"></script>
 					</strong>
 				</div>
 			</div>
@@ -39,7 +39,7 @@
 			<div class="columns">
 				<div class="column is-4 is-offset-4">
 					<p class="is-pulled-right">
-						<a href="/lab" class="tag is-primary is-large is-rounded cmulab">CMULab</a>
+						<a href="/precept" class="tag is-primary is-large is-rounded cmulab">CMULab</a>
 					</p>
 					<h3 class="title is-5">{{course}} Check-in</h3>
 					<h6 class="subtitle is-6">
@@ -49,16 +49,16 @@
 						<span>Student: {{student}}</span>
 					</h6>
 
-					<form method="post" action="/lab/checkin/{{student}}">
+					<form method="post" action="/precept/checkin/{{student}}">
 						{{#if (isNonEmpty flags)}}
 							<input type="hidden" name="flags" value="{{toString flags}}" />
 							<input id="override" type="hidden" name="override" value="" />
 						{{/if}}
-						{{#if lab}}
+						{{#if precept}}
 							<div class="field">
-								<label class="label">Lab</label>
+								<label class="label">Precept</label>
 								<div class="control">
-									<input class="input" name="lab" type="number" placeholder="Example: 12">
+									<input class="input" name="precept" type="number" placeholder="Example: 12">
 								</div>
 							</div>
 						{{/if}}
@@ -81,7 +81,7 @@
 										</div>
 									{{/each}}
 								</div>
-								<script src="/lab/javascripts/score-buttons.js"></script>
+								<script src="/precept/javascripts/score-buttons.js"></script>
 							{{else}}
 								<div class="control">
 									<input class="input" name="score" type="number" step="0.1" placeholder="Example: 3" min="{{minscore}}" max="{{maxscore}}" required>

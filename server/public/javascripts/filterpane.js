@@ -137,12 +137,12 @@ var FilterPane = function (_React$Component) {
                 React.createElement(
                   'label',
                   { className: 'label' },
-                  'Lab:'
+                  'Precept:'
                 ),
                 React.createElement(
                   'div',
                   { className: 'control' },
-                  React.createElement('input', { className: 'input', name: 'lab', type: 'text', placeholder: 'Example: quacks lab', value: filters.lab, onChange: updateFilters })
+                  React.createElement('input', { className: 'input', name: 'lab', type: 'text', placeholder: 'Example: quacks precept', value: filters.precept, onChange: updateFilters })
                 )
               ),
               React.createElement(

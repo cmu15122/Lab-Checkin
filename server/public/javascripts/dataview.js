@@ -37,7 +37,7 @@ var DataView = function (_React$Component) {
     _this.toggleFilters = _this.toggleFilters.bind(_this);
     _this.updateFilters = _this.updateFilters.bind(_this);
     _this.updateSort = _this.updateSort.bind(_this);
-    _this.assignLab = _this.assignLab.bind(_this);
+    _this.assignPrecept = _this.assignPrecept.bind(_this);
     return _this;
   }
 
@@ -46,7 +46,7 @@ var DataView = function (_React$Component) {
     value: function getData() {
       var _this2 = this;
 
-      axios.post('/lab/admin/rawdata', {
+      axios.post('/precept/admin/rawdata', {
         filters: this.state.filters,
         sort: this.state.sort
       }).then(function (res) {
@@ -66,7 +66,7 @@ var DataView = function (_React$Component) {
       var _this3 = this;
 
       if (type === 'csv') {
-        axios.post('/lab/admin/getcsv', {
+        axios.post('/precept/admin/getcsv', {
           filters: this.state.filters,
           sort: this.state.sort
         }).then(function (res) {
@@ -103,7 +103,7 @@ var DataView = function (_React$Component) {
     value: function deleteData() {
       var _this4 = this;
 
-      axios.post('/lab/admin/delete', {
+      axios.post('/precept/admin/delete', {
         filters: this.state.filters
       }).then(function () {
         return _this4.setState({
@@ -171,13 +171,13 @@ var DataView = function (_React$Component) {
       }, this.getData);
     }
   }, {
-    key: 'assignLab',
-    value: function assignLab(lab, preserve) {
+    key: 'assignPrecept',
+    value: function assignPrecept(precept, preserve) {
       var _this5 = this;
 
-      axios.post('/lab/admin/assignlab', {
+      axios.post('/precept/admin/assignprecept', {
         filters: this.state.filters,
-        lab: lab,
+        precept: precept,
         preserve: preserve
       }).then(this.getData, function (err) {
         return _this5.setState({ error: err });
@@ -224,7 +224,7 @@ var DataView = function (_React$Component) {
         React.createElement(FilterPane, { filters: filters, filtersActive: filtersActive, toggleFilters: this.toggleFilters, updateFilters: this.updateFilters, getData: this.getData }),
         React.createElement(DataViewBar, { showDelete: showDelete, entriesCount: entries.length, filters: filters, toggleFilters: this.toggleFilters, updateFilters: this.updateFilters, getData: this.getData, downloadData: this.downloadData, deleteData: this.deleteData }),
         React.createElement(DataDownload, { isActive: modalActive, toggleModal: this.toggleModal, data: downloadData, type: downloadType }),
-        React.createElement(DataTable, { sort: sort, entries: entries, updateSort: this.updateSort, assignLab: this.assignLab })
+        React.createElement(DataTable, { sort: sort, entries: entries, updateSort: this.updateSort, assignPrecept: this.assignPrecept })
       );
     }
   }]);

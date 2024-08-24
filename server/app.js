@@ -96,9 +96,9 @@ app.use('/qrcode', qrcodeRouter);
 app.post('/go', (req, res) => {
   const { student_id } = req.body;
   // if student_id is not provided, go to home page
-  if (!student_id) return res.redirect('/lab');
+  if (!student_id) return res.redirect('/precept');
   // go to checkin page for student
-  res.redirect(`/lab/checkin/${student_id}`);
+  res.redirect(`/precept/checkin/${student_id}`);
 });
 
 // catch 404 and forward to error handler

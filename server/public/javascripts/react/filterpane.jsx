@@ -52,9 +52,9 @@ class FilterPane extends React.Component {
               </div>
             </div>
             <div className='field'>
-              <label className='label'>Lab:</label>
+              <label className='label'>Precept:</label>
               <div className='control'>
-                <input className='input' name='lab' type='text' placeholder='Example: quacks lab' value={filters.lab} onChange={updateFilters} />
+                <input className='input' name='precept' type='text' placeholder='Example: quacks precept' value={filters.precept} onChange={updateFilters} />
               </div>
             </div>
             <div className='field'>

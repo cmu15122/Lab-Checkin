@@ -3,49 +3,49 @@ class DataTable extends React.Component {
     super(props);
     this.state = {
       studentVisibility: false,
-      lab: '',
-      labActive: false,
+      precept: '',
+      preceptActive: false,
       preserve: false,
     };
     this.toggleStudentVisibility = this.toggleStudentVisibility.bind(this);
-    this.toggleLab = this.toggleLab.bind(this);
-    this.onChangeLab = this.onChangeLab.bind(this);
+    this.togglePrecept = this.togglePrecept.bind(this);
+    this.onChangePrecept = this.onChangePrecept.bind(this);
     this.onChangePreserve = this.onChangePreserve.bind(this);
-    this.sendLab = this.sendLab.bind(this);
+    this.sendPrecept = this.sendPrecept.bind(this);
   }
 
   toggleStudentVisibility() {
     this.setState(({ studentVisibility }) => ({ studentVisibility: !studentVisibility }));
   }
   
-  toggleLab() {
-    this.setState(({ labActive }) => ({ labActive: !labActive }));
+  togglePrecept() {
+    this.setState(({ preceptActive }) => ({ preceptActive: !preceptActive }));
   }
 
-  onChangeLab(e) {
-    this.setState({ lab: e.target.value });
+  onChangePrecept(e) {
+    this.setState({ precept: e.target.value });
   }
 
   onChangePreserve(e) {
     this.setState({ preserve: e.target.checked });
   }
 
-  sendLab(f) {
-    this.toggleLab();
+  sendPrecept(f) {
+    this.togglePrecept();
     f.preventDefault();
-    const { lab, preserve } = this.state;
-    this.props.assignLab(lab, preserve);
-    this.setState({ lab: '' });
+    const { precept, preserve } = this.state;
+    this.props.assignPrecept(precept, preserve);
+    this.setState({ precept: '' });
   }
 
   render() {
     const { sort, entries, updateSort } = this.props;
-    const { studentVisibility, labActive } = this.state;
+    const { studentVisibility, preceptActive } = this.state;
     const columns = [
       ['Section', 'section'],
       ['Student ID', 'student_id'],
       ['Score', 'score'],
-      ['Lab', 'lab'],
+      ['Precept', 'precept'],
       ['Date', 'date'],
       ['TA', 'ta'],
       ['Flags', 'flags'],
@@ -55,10 +55,10 @@ class DataTable extends React.Component {
         <tr>
         {columns.map(([title, name]) => (
           <th key={name}>
-            {name === 'lab' &&
-              <div className={`dropdown ${labActive ? 'is-active' : ''}`}>
+            {name === 'precept' &&
+              <div className={`dropdown ${preceptActive ? 'is-active' : ''}`}>
                 <div className='dropdown-trigger'>
-                  <a className='tooltip' data-tooltip='Assign lab' onClick={this.toggleLab}>
+                  <a className='tooltip' data-tooltip='Assign precept' onClick={this.togglePrecept}>
                     <span className='icon has-text-info'>
                       <i className='fas fa-pencil-alt'></i>
                     </span>
@@ -67,17 +67,17 @@ class DataTable extends React.Component {
                 <div className='dropdown-menu' role='menu'>
                   <div className='dropdown-content'>
                     <div className='dropdown-item'>
-                      <form onSubmit={this.sendLab}>
+                      <form onSubmit={this.sendPrecept}>
                         <div className='field'>
                           <div className='control'>
-                            <input className='input is-small' type='text' placeholder='Example: quacks lab' onChange={this.onChangeLab} />
+                            <input className='input is-small' type='text' placeholder='Example: quacks precept' onChange={this.onChangePrecept} />
                           </div>
                         </div>
                         <div className='field'>
                           <label className='checkbox'>
                             <input type='checkbox' onChange={this.onChangePreserve} />
                             &nbsp;
-                            Preserve existing lab designations
+                            Preserve existing precept designations
                           </label>
                         </div>
                         <div className='field'>

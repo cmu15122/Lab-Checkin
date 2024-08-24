@@ -107,7 +107,7 @@ var FlagDropdown = function (_React$Component) {
               '\xA0 Go to the ',
               React.createElement(
                 'a',
-                { href: '/lab/admin/students' },
+                { href: '/precept/admin/students' },
                 'students page'
               ),
               ' to update student registration data.'
@@ -123,7 +123,7 @@ var FlagDropdown = function (_React$Component) {
               '\xA0 Update section and time slot data ',
               React.createElement(
                 'a',
-                { href: '/lab/admin/settings' },
+                { href: '/precept/admin/settings' },
                 'in settings'
               ),
               '.'

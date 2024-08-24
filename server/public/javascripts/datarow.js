@@ -35,7 +35,7 @@ var DataRow = function (_React$Component) {
     value: function toggleGood() {
       var _this2 = this;
 
-      axios.post('/lab/admin/togglegood', {
+      axios.post('/precept/admin/togglegood', {
         _id: this.props._id,
         good: !this.state.good
       }).then(function (res) {
@@ -58,7 +58,7 @@ var DataRow = function (_React$Component) {
           section = _props.section,
           student_id = _props.student_id,
           score = _props.score,
-          lab = _props.lab,
+          precept = _props.precept,
           date = _props.date,
           ta = _props.ta,
           flags = _props.flags;
@@ -87,7 +87,7 @@ var DataRow = function (_React$Component) {
         React.createElement(
           'td',
           null,
-          lab
+          precept
         ),
         React.createElement(
           'td',

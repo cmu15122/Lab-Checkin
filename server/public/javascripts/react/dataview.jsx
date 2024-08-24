@@ -24,7 +24,7 @@ class DataView extends React.Component {
     this.toggleFilters = this.toggleFilters.bind(this);
     this.updateFilters = this.updateFilters.bind(this);
     this.updateSort = this.updateSort.bind(this);
-    this.assignLab = this.assignLab.bind(this);
+    this.assignPrecept = this.assignPrecept.bind(this);
   }
 
   getData() {
@@ -122,10 +122,10 @@ class DataView extends React.Component {
     }, this.getData);
   }
 
-  assignLab(lab, preserve) {
-    axios.post('/admin/assignlab', {
+  assignPrecept(precept, preserve) {
+    axios.post('/admin/assignprecept', {
       filters: this.state.filters,
-      lab,
+      precept,
       preserve,
     }).then(this.getData, err => this.setState({ error: err }));
   }
@@ -148,7 +148,7 @@ class DataView extends React.Component {
       <FilterPane filters={filters} filtersActive={filtersActive} toggleFilters={this.toggleFilters} updateFilters={this.updateFilters} getData={this.getData} />
       <DataViewBar showDelete={showDelete} entriesCount={entries.length} filters={filters} toggleFilters={this.toggleFilters} updateFilters={this.updateFilters} getData={this.getData} downloadData={this.downloadData} deleteData={this.deleteData} />
       <DataDownload isActive={modalActive} toggleModal={this.toggleModal} data={downloadData} type={downloadType} />
-      <DataTable sort={sort} entries={entries} updateSort={this.updateSort} assignLab={this.assignLab} />
+      <DataTable sort={sort} entries={entries} updateSort={this.updateSort} assignPrecept={this.assignPrecept} />
     </div>;
   }
 }

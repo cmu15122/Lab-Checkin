@@ -1,10 +1,10 @@
 <article class="message is-info">
 	<div class="message-body">
-		<i>Users</i> should be instructors and TAs that can check students in for labs. <i>Admins</i> are people who can access the page you're on right now.
+		<i>Users</i> should be instructors and TAs that can check students in for precepts. <i>Admins</i> are people who can access the page you're on right now.
 	</div>
 </article>
 
-<form method="POST" action="/lab/admin/adduser" target="_self">
+<form method="POST" action="/precept/admin/adduser" target="_self">
 	<label class="label">User ID: {{> asterisk}}</label>
 	<div class="field is-grouped">
 		<div class="control is-expanded">
@@ -49,7 +49,7 @@
 					{{/if}}
 				</td>
 				<td>
-					<form method="POST" action="/lab/admin/removeuser" target="_self">
+					<form method="POST" action="/precept/admin/removeuser" target="_self">
 						<input type="hidden" name="student_id" value="{{this._id}}" />
 						<button type="submit" class="button is-small is-danger" title="Remove">
 							<span class="icon is-small">

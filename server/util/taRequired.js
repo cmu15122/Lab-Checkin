@@ -2,7 +2,7 @@
 module.exports = (req, res, next) => {
   if (!req.user) {
     req.session.oauth2return = req.originalUrl;
-    return res.redirect('/lab/login');
+    return res.redirect('/precept/login');
   }
   if (req.user.student) {
     return next('Accessing this page requires TA access. Click the CMULab icon to return home.');

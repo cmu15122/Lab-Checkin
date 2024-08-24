@@ -18,15 +18,15 @@ var DataTable = function (_React$Component) {
 
     _this.state = {
       studentVisibility: false,
-      lab: '',
-      labActive: false,
+      precept: '',
+      preceptActive: false,
       preserve: false
     };
     _this.toggleStudentVisibility = _this.toggleStudentVisibility.bind(_this);
-    _this.toggleLab = _this.toggleLab.bind(_this);
-    _this.onChangeLab = _this.onChangeLab.bind(_this);
+    _this.togglePrecept = _this.togglePrecept.bind(_this);
+    _this.onChangePrecept = _this.onChangePrecept.bind(_this);
     _this.onChangePreserve = _this.onChangePreserve.bind(_this);
-    _this.sendLab = _this.sendLab.bind(_this);
+    _this.sendPrecept = _this.sendPrecept.bind(_this);
     return _this;
   }
 
@@ -39,17 +39,17 @@ var DataTable = function (_React$Component) {
       });
     }
   }, {
-    key: 'toggleLab',
-    value: function toggleLab() {
+    key: 'togglePrecept',
+    value: function togglePrecept() {
       this.setState(function (_ref2) {
-        var labActive = _ref2.labActive;
-        return { labActive: !labActive };
+        var preceptActive = _ref2.preceptActive;
+        return { preceptActive: !preceptActive };
       });
     }
   }, {
-    key: 'onChangeLab',
-    value: function onChangeLab(e) {
-      this.setState({ lab: e.target.value });
+    key: 'onChangePrecept',
+    value: function onChangePrecept(e) {
+      this.setState({ precept: e.target.value });
     }
   }, {
     key: 'onChangePreserve',
@@ -57,16 +57,16 @@ var DataTable = function (_React$Component) {
       this.setState({ preserve: e.target.checked });
     }
   }, {
-    key: 'sendLab',
-    value: function sendLab(f) {
-      this.toggleLab();
+    key: 'sendPrecept',
+    value: function sendPrecept(f) {
+      this.togglePrecept();
       f.preventDefault();
       var _state = this.state,
-          lab = _state.lab,
+          precept = _state.precept,
           preserve = _state.preserve;
 
-      this.props.assignLab(lab, preserve);
-      this.setState({ lab: '' });
+      this.props.assignPrecept(precept, preserve);
+      this.setState({ precept: '' });
     }
   }, {
     key: 'render',
@@ -79,9 +79,9 @@ var DataTable = function (_React$Component) {
           updateSort = _props.updateSort;
       var _state2 = this.state,
           studentVisibility = _state2.studentVisibility,
-          labActive = _state2.labActive;
+          preceptActive = _state2.preceptActive;
 
-      var columns = [['Section', 'section'], ['Student ID', 'student_id'], ['Score', 'score'], ['Lab', 'lab'], ['Date', 'date'], ['TA', 'ta'], ['Flags', 'flags']];
+      var columns = [['Section', 'section'], ['Student ID', 'student_id'], ['Score', 'score'], ['Precept', 'precept'], ['Date', 'date'], ['TA', 'ta'], ['Flags', 'flags']];
       return React.createElement(
         'table',
         { className: 'table is-hoverable is-fullwidth' },
@@ -99,15 +99,15 @@ var DataTable = function (_React$Component) {
               return React.createElement(
                 'th',
                 { key: name },
-                name === 'lab' && React.createElement(
+                name === 'precept' && React.createElement(
                   'div',
-                  { className: 'dropdown ' + (labActive ? 'is-active' : '') },
+                  { className: 'dropdown ' + (preceptActive ? 'is-active' : '') },
                   React.createElement(
                     'div',
                     { className: 'dropdown-trigger' },
                     React.createElement(
                       'a',
-                      { className: 'tooltip', 'data-tooltip': 'Assign lab', onClick: _this2.toggleLab },
+                      { className: 'tooltip', 'data-tooltip': 'Assign precept', onClick: _this2.togglePrecept },
                       React.createElement(
                         'span',
                         { className: 'icon has-text-info' },
@@ -126,14 +126,14 @@ var DataTable = function (_React$Component) {
                         { className: 'dropdown-item' },
                         React.createElement(
                           'form',
-                          { onSubmit: _this2.sendLab },
+                          { onSubmit: _this2.sendPrecept },
                           React.createElement(
                             'div',
                             { className: 'field' },
                             React.createElement(
                               'div',
                               { className: 'control' },
-                              React.createElement('input', { className: 'input is-small', type: 'text', placeholder: 'Example: quacks lab', onChange: _this2.onChangeLab })
+                              React.createElement('input', { className: 'input is-small', type: 'text', placeholder: 'Example: quacks precept', onChange: _this2.onChangePrecept })
                             )
                           ),
                           React.createElement(
@@ -143,7 +143,7 @@ var DataTable = function (_React$Component) {
                               'label',
                               { className: 'checkbox' },
                               React.createElement('input', { type: 'checkbox', onChange: _this2.onChangePreserve }),
-                              '\xA0 Preserve existing lab designations'
+                              '\xA0 Preserve existing precept designations'
                             )
                           ),
                           React.createElement(

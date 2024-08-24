@@ -43,7 +43,7 @@ router.get('/:student_id', taRequired, (req, res) => {
         student: req.params.student_id,
         section,
         radio: config.get('radioInput'),
-        lab: config.get('manualLab'),
+        precept: config.get('manualPrecept'),
         allowOverride: config.get('allowOverride'),
         minscore: Math.min.apply(null, possibleScores),
         maxscore: Math.max.apply(null, possibleScores),
@@ -166,7 +166,7 @@ router.post('/:student_id', taRequired, (req, res, next) => {
       student_id,
       date,
       section: section.toUpperCase(),
-      lab: config.get('manualLab') ? req.body.lab : null,
+      precept: config.get('manualPrecept') ? req.body.precept : null,
       score,
       ta: req.user._user._id,
     };
@@ -208,10 +208,10 @@ router.post('/:student_id', taRequired, (req, res, next) => {
 
         // send the message
         email.sendMail(message)
-          .then(() => res.redirect('/lab/ta?success=check-in'))
+          .then(() => res.redirect('/precept/ta?success=check-in'))
           .catch(emailErr => next(createError(500, emailErr)));
       } else {
-        return res.redirect('/lab/ta?success=check-in');
+        return res.redirect('/precept/ta?success=check-in');
       }
     });
   });
