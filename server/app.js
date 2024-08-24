@@ -62,7 +62,6 @@ passport.use(new GoogleStrategy({
   const email = profile.emails[0].value;
   // check if user is authorized in db
   const student_id = email.slice(0, email.lastIndexOf('@'));
-  if (student_id == 'mihirk') return done(null, {student: true, _user: {_id: 'mihirk'}});
   User.findOne({ _id: student_id }, (err, user) => {
     if (!user) {
       Student.findOne({ _id: student_id }, (err, user) => {
