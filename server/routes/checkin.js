@@ -187,7 +187,7 @@ router.post('/:student_id', taRequired, (req, res, next) => {
       if (process.env.CMULAB_SMTP_SERVER) {
         // create a message
         const message = {
-          from: `CMULab for ${config.get('course')} <${process.env.CMULAB_SMTP_USER}>`,
+	  from: `${config.get('course')} Staff <${process.env.CMULAB_SMTP_USER}>`,
           to: `${student_id}@${config.get('emailDomain')}`,
           subject: `You have been checked in to ${config.get('course')}!`,
           html: `
@@ -196,7 +196,7 @@ router.post('/:student_id', taRequired, (req, res, next) => {
             <p><span style="font-weight: bold">Student ID:</span> ${student_id}
             <br /><span style="font-weight: bold">Section:</span> ${section.toUpperCase()}
             <br /><span style="font-weight: bold">Score:</span> ${score}
-            <br /><span style="font-weight: bold">Time:</span> ${convertDate(moment(date), -1, false).format('MMMM Do YYYY, h:mm:ss a')}
+            <br /><span style="font-weight: bold">Time:</span> ${moment(date).format('MMMM Do, YYYY — h:mm:ss A')}
             <br /><span style="font-weight: bold">TA:</span> ${req.user._user._id}</p>
 
             <p>Best,<br />${config.get('course')} Staff</p>
