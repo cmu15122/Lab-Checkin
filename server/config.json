@@ -8,7 +8,7 @@
   "showDelete": true,
   "lowercaseStudents": false,
   "radioInput": true,
-  "manualLab": false,
+  "manualPrecept": false,
   "flagSection": true,
   "flagAttempts": "",
   "flagAttemptsThreshold": 0,
