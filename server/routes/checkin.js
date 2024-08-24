@@ -191,7 +191,7 @@ router.post('/:student_id', taRequired, (req, res, next) => {
           to: `${student_id}@${config.get('emailDomain')}`,
           subject: `You have been checked in to ${config.get('course')}!`,
           html: `
-            <h4>You have been checked in through <a href="https://cmulab.quantumstack.xyz">CMULab</a> for ${config.get('course')}!</h4>
+            <h4>You have been checked in through <a href="https://cs122.andrew.cmu.edu/precept">CMULab</a> for ${config.get('course')}!</h4>
             <p>Please verify the contents of this email and ask your TA <span style="font-weight: bold">immediately</span> regarding any questions or clarifications.</p>
             <p><span style="font-weight: bold">Student ID:</span> ${student_id}
             <br /><span style="font-weight: bold">Section:</span> ${section.toUpperCase()}
