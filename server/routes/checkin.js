@@ -208,10 +208,10 @@ router.post('/:student_id', taRequired, (req, res, next) => {
 
         // send the message
         email.sendMail(message)
-          .then(() => res.redirect('/lab/ta/?success=check-in'))
+          .then(() => res.redirect('/lab/ta?success=check-in'))
           .catch(emailErr => next(createError(500, emailErr)));
       } else {
-        return res.redirect('/lab/ta/?success=check-in');
+        return res.redirect('/lab/ta?success=check-in');
       }
     });
   });
