@@ -6,7 +6,7 @@ const config = require('./../util/config');
 const convertDate = require('./../util/convertDate');
 const Entry = require('./../models/Entry');
 const Student = require('./../models/Student');
-const TARequired = require('./../util/TARequired');
+const taRequired = require('../util/taRequired');
 
 const router = express.Router();
 
@@ -24,7 +24,7 @@ function parseSectionTime(data) {
 }
 
 /* GET checkin form */
-router.get('/:student_id', TARequired, (req, res) => {
+router.get('/:student_id', taRequired, (req, res) => {
   let { student_id } = req.params;
   // convert student_id to lowercase if necessary
   if (config.get('lowercaseStudents')) student_id = student_id.toLowerCase();
@@ -133,7 +133,7 @@ router.get('/:student_id', TARequired, (req, res) => {
 });
 
 /* POST checkin data */
-router.post('/:student_id', TARequired, (req, res, next) => {
+router.post('/:student_id', taRequired, (req, res, next) => {
   const {
     section, score, flags, override,
   } = req.body;
@@ -208,10 +208,10 @@ router.post('/:student_id', TARequired, (req, res, next) => {
 
         // send the message
         email.sendMail(message)
-          .then(() => res.redirect('/lab/?success=check-in'))
+          .then(() => res.redirect('/lab/ta/?success=check-in'))
           .catch(emailErr => next(createError(500, emailErr)));
       } else {
-        return res.redirect('/lab/?success=check-in');
+        return res.redirect('/lab/ta/?success=check-in');
       }
     });
   });

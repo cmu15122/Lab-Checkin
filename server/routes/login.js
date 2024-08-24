@@ -22,7 +22,7 @@ router.get('/callback',
   (req, res) => {
     // redirect to original page if that exists
     // otherwise, redirect to home for TAs or the qrcode for students
-    const default_path = req.user.student ? '/lab/qrcode' : '/lab';
+    const default_path = req.user.student ? '/lab/qrcode' : '/lab/ta';
 
     var redirect = '/lab';
     if (req.session.oauth2return) {

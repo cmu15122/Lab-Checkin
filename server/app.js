@@ -17,6 +17,7 @@ const config = require('./util/config');
 const helpers = require('./util/helpers');
 const User = require('./models/User');
 const indexRouter = require('./routes/index');
+const taRouter = require('./routes/ta');
 const checkinRouter = require('./routes/checkin');
 const adminRouter = require('./routes/admin');
 const loginRouter = require('./routes/login');
@@ -85,6 +86,7 @@ app.use(passport.session());
 mongoose.connect(process.env.CMULAB_DATABASE);
 
 app.use('/', indexRouter);
+app.use('/ta', taRouter);
 app.use('/checkin', checkinRouter);
 app.use('/admin', adminRouter);
 app.use('/login', loginRouter);
