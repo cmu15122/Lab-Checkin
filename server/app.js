@@ -16,6 +16,7 @@ require('dotenv').config();
 const config = require('./util/config');
 const helpers = require('./util/helpers');
 const User = require('./models/User');
+const Student = require('./models/Student');
 const indexRouter = require('./routes/index');
 const taRouter = require('./routes/ta');
 const checkinRouter = require('./routes/checkin');
@@ -65,11 +66,15 @@ passport.use(new GoogleStrategy({
   User.findOne({ _id: student_id }, (err, user) => {
     if (!user) {
       Student.findOne({ _id: student_id }, (err, user) => {
-        if (!user) return done(`User ${student_id} is not enrolled in ${config.get('course')}`);
-	return done(err, {student: true, _user: user});
+        if (!user) {
+          return done(`User ${student_id} is not enrolled in ${config.get('course')}`, false);
+	} else {
+          return done(err, {student: true, _user: user});
+	}
       });
+    } else {
+      return done(err, {student: false, _user: user});
     }
-    return done(err, {student: false, _user: user});
   });
 }));
 passport.serializeUser((user, cb) => {
