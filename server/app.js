@@ -103,7 +103,7 @@ app.post('/go', (req, res) => {
   // if student_id is not provided, go to home page
   if (!student_id) return res.redirect('/precept');
   // go to checkin page for student
-  res.redirect(`/precept/checkin/${student_id}`);
+  res.redirect(`/precept/checkin/${student_id.trim().toLowerCase()}`);
 });
 
 // catch 404 and forward to error handler
