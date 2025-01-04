@@ -68,9 +68,9 @@ passport.use(new GoogleStrategy({
       Student.findOne({ _id: student_id }, (err, user) => {
         if (!user) {
           return done(`User ${student_id} is not enrolled in ${config.get('course')}`, false);
-	} else {
+        } else {
           return done(err, {student: true, _user: user});
-	}
+        }
       });
     } else {
       return done(err, {student: false, _user: user});
