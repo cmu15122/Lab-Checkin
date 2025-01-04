@@ -26,6 +26,7 @@ function parseSectionTime(data) {
 /* GET checkin form */
 router.get('/:student_id', taRequired, (req, res) => {
   let { student_id } = req.params;
+  student_id = student_id.trim();
   // convert student_id to lowercase if necessary
   if (config.get('lowercaseStudents')) student_id = student_id.toLowerCase();
   // query student with given _id
@@ -146,6 +147,7 @@ router.post('/:student_id', taRequired, (req, res, next) => {
   }
 
   let { student_id } = req.params;
+  student_id = student_id.trim();
   // convert student_id to lowercase if necessary
   if (config.get('lowercaseStudents')) student_id = student_id.toLowerCase();
 

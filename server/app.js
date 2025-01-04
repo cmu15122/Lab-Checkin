@@ -99,11 +99,14 @@ app.use('/qrcode', qrcodeRouter);
 
 /* POST go to checkin */
 app.post('/go', (req, res) => {
-  const { student_id } = req.body;
+  let { student_id } = req.body;
   // if student_id is not provided, go to home page
   if (!student_id) return res.redirect('/precept');
+  student_id = student_id.trim();
+  // convert student_id to lowercase if necessary
+  if (config.get('lowercaseStudents')) student_id = student_id.toLowerCase();
   // go to checkin page for student
-  res.redirect(`/precept/checkin/${student_id.trim().toLowerCase()}`);
+  res.redirect(`/precept/checkin/${student_id}`);
 });
 
 // catch 404 and forward to error handler
