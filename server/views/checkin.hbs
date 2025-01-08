@@ -69,6 +69,7 @@
 							</div>
 						</div>
 						{{#if (onlyOneElem possibleScores)}}
+							<label class="label">Score: {{possibleScores.[0]}}</label>
 							<input type="hidden" name="score" value="{{possibleScores.[0]}}" />
 						{{else}}
 							<div class="field">
