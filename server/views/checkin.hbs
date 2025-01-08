@@ -68,7 +68,9 @@
 								<input class="input" name="section" type="text" placeholder="Example: A" value="{{#if section}}{{section}}{{/if}}" required>
 							</div>
 						</div>
-						{{#if possibleScores.length - 1}}
+						{{#if (onlyOneElem possibleScores)}}
+							<input type="hidden" name="score" value="{{possibleScores.[0]}}" />
+						{{else}}
 							<div class="field">
 								<label class="label">Score: {{> asterisk}}</label>
 								{{#if radio}}
@@ -89,8 +91,6 @@
 									</div>
 								{{/if}}
 							</div>
-						{{else}}
-							<input type="hidden" name="score" value="{{possibleScores.[0]}}" />
 						{{/if}}
 						<div class="field">
 							<div class="control">

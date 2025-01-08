@@ -44,4 +44,5 @@ module.exports = {
   selected: (val1, val2) => (val1 === val2 ? 'selected' : ''),
   // or condition
   or: (v1, v2) => Boolean(v1 || v2),
+  onlyOneElem: arr => arr.length == 1,
 };
