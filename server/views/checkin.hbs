@@ -68,33 +68,37 @@
 								<input class="input" name="section" type="text" placeholder="Example: A" value="{{#if section}}{{section}}{{/if}}" required>
 							</div>
 						</div>
-						<div class="field">
-							<label class="label">Score: {{> asterisk}}</label>
-							{{#if radio}}
-								<input id="score" class="is-hidden" name="score" type="number" step="0.1" required />
-								<div class="columns is-multiline is-mobile">
-									{{#each possibleScores}}
-										<div class="column">
-											<a id="score-{{this}}" onclick="setScore({{this}});" class="button is-fullwidth is-large score-button">
-												{{this}}
-											</a>
-										</div>
-									{{/each}}
-								</div>
-								<script src="/precept/javascripts/score-buttons.js"></script>
-							{{else}}
-								<div class="control">
-									<input class="input" name="score" type="number" step="0.1" placeholder="Example: 3" min="{{minscore}}" max="{{maxscore}}" required>
-								</div>
-							{{/if}}
-						</div>
+						{{#if possibleScores.length - 1}}
+							<div class="field">
+								<label class="label">Score: {{> asterisk}}</label>
+								{{#if radio}}
+									<input id="score" class="is-hidden" name="score" type="number" step="0.1" required />
+									<div class="columns is-multiline is-mobile">
+										{{#each possibleScores}}
+											<div class="column">
+												<a id="score-{{this}}" onclick="setScore({{this}});" class="button is-fullwidth is-large score-button">
+													{{this}}
+												</a>
+											</div>
+										{{/each}}
+									</div>
+									<script src="/precept/javascripts/score-buttons.js"></script>
+								{{else}}
+									<div class="control">
+										<input class="input" name="score" type="number" step="0.1" placeholder="Example: 3" min="{{minscore}}" max="{{maxscore}}" required>
+									</div>
+								{{/if}}
+							</div>
+						{{else}}
+							<input type="hidden" name="score" value="{{possibleScores.[0]}}" />
+						{{/if}}
 						<div class="field">
 							<div class="control">
 								<button type="submit" class="button is-info is-fullwidth">
 									<span class="icon">
 										<i class="fa fa-check"></i>
-							    	</span>
-									<span>Submit!</span>
+									</span>
+									<span>Check in!</span>
 								</button>
 							</div>
 						</div>
